@@ -83,4 +83,14 @@ Después del proceso de limpieza y selección, el conjunto de datos quedó confo
 | Overwatch            | 720              |
 | **Total**            | **4,451**        |
 
+| Videojuego           | Imágenes (test) |
+|----------------------|------------------|
+| Dead by Daylight     | 157              |
+| Counter-Strike       | 154              |
+| Valorant             | 165              |
+| Clash Royale         | 161              |
+| Minecraft            | 157              |
+| Overwatch            | 151              |
+| **Total**            | **945**        |
+
 Esta distribución permite mantener una representación relativamente equilibrada entre las clases, lo que ayuda a que el modelo aprenda patrones visuales distintivos de cada videojuego. En caso de ser necesario, se podrá incrementar el número de imágenes por clase para mejorar el rendimiento del modelo o reforzar aquellas categorías que presenten menor precisión durante las pruebas.
