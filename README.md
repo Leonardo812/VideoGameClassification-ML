@@ -114,4 +114,7 @@ Se aplicaron transformaciones aleatorias a las imágenes del conjunto de entrena
 
 Estas técnicas ayudan a reducir el sobreajuste y permiten que el modelo aprenda características más generales del contenido visual.
 
+![image](https://github.com/user-attachments/assets/65bc234d-d7e0-4083-ab72-3a0ad6e2556b)
+
+
 
