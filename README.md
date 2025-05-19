@@ -94,3 +94,27 @@ Después del proceso de limpieza y selección, el conjunto de datos quedó confo
 | **Total**            | **945**        |
 
 Esta distribución permite mantener una representación relativamente equilibrada entre las clases, lo que ayuda a que el modelo aprenda patrones visuales distintivos de cada videojuego. En caso de ser necesario, se podrá incrementar el número de imágenes por clase para mejorar el rendimiento del modelo o reforzar aquellas categorías que presenten menor precisión durante las pruebas.
+
+## 🛠️ Preprocesado y técnicas de aumento de datos
+
+Para mejorar la capacidad del modelo para generalizar y hacerlo más robusto frente a las distintas condiciones gráficas en las que pueden presentarse los videojuegos (por ejemplo, baja calidad, capturas con diferente iluminación o resolución), se aplicaron las siguientes técnicas de preprocesamiento:
+
+### 🔹 Reescalado (normalización)
+Cada valor de píxel se divide entre **255** (`rescale=1./255`) para transformar el rango de los píxeles de **[0, 255] a [0, 1]**. Esto estabiliza el proceso de optimización y mejora la convergencia del modelo durante el entrenamiento.
+
+### 🔹 Redimensionamiento (resize)
+Todas las imágenes se redimensionaron al tamaño de **224x224 píxeles**, que es un estándar común para modelos de redes neuronales convolucionales (CNN). Esto asegura consistencia en la entrada de datos.
+
+### 🔹 Aumento de datos (data augmentation)
+Se aplicaron transformaciones aleatorias a las imágenes del conjunto de entrenamiento para simular una mayor diversidad visual sin necesidad de agregar nuevas imágenes. Las transformaciones incluyen:
+
+- **Giro horizontal aleatorio** (`RandomFlip`)
+- **Rotación aleatoria** (`RandomRotation`)
+- **Zoom aleatorio** (`RandomZoom`)
+
+Estas técnicas ayudan a reducir el sobreajuste y permiten que el modelo aprenda características más generales del contenido visual.
+
+![image](https://github.com/user-attachments/assets/65bc234d-d7e0-4083-ab72-3a0ad6e2556b)
+
+
+
