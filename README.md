@@ -121,7 +121,7 @@ Estas técnicas ayudan a reducir el sobreajuste y permiten que el modelo aprenda
 ### Arquitectura CNN
 Una **Red Neuronal Convolucional (CNN)** es una arquitectura de red para Deep Learning que aprende directamente a partir de datos. Mediante capas de convolución aprende filtros que, de forma jerárquica, reconocen desde bordes y texturas hasta composiciones visuales complejas; las capas de *max-pooling* comprimen la información, otorgando invarianza a traslaciones y escalas. Así, la CNN elimina la dependencia de descriptores manuales y se adapta a la gran variabilidad presente en las capturas de videojuegos.
 
-![Esquema de la CNN](ruta/a/imagen.png)
+![image](https://github.com/user-attachments/assets/eae4b4b3-83bc-462d-9d12-417ec1106cd6)
 
 #### ¿Por qué una CNN y no SVM / Random Forest?
 - **Extracción de características automática.** La red aprende sola los filtros que distinguen *pixel-art* (Minecraft) de texturas realistas (CS:GO), algo que los enfoques basados en HOG + SVM no logran sin una ingeniería manual costosa.  
