@@ -126,8 +126,7 @@ Una **Red Neuronal Convolucional (CNN)** es una arquitectura de red para Deep Le
 #### ¿Por qué una CNN y no SVM / Random Forest?
 - **Extracción de características automática.** La red aprende sola los filtros que distinguen *pixel-art* (Minecraft) de texturas realistas (CS:GO), algo que los enfoques basados en HOG + SVM no logran sin una ingeniería manual costosa.  
 - **Robustez a transformaciones.** Convolución + pooling mantiene el rendimiento ante cambios de brillo, giros leves o escalados típicos de un *screenshot*.  
-- **Escalabilidad.** La arquitectura puede crecer (más filtros/capas) o migrar a *transfer learning* con muy pocos cambios, mientras que los modelos clásicos requieren redefinir descriptores.  
-- **Desempeño empírico.** En pruebas piloto la CNN superó en ≈ 7 p.p. de *accuracy* a los demás enfoques y mostró menor sobre-ajuste gracias a *data-augmentation* + Dropout.
+- **Escalabilidad.** La arquitectura puede crecer (más filtros/capas) o migrar, mientras que los modelos clásicos requieren redefinir descriptores.  
 
 > **Paper de Referencia**. Breve F. (2023) *From Pixels to Titles: Video Game Identification by Screenshots using Convolutional Neural Networks*, arXiv:2311.15963
 
