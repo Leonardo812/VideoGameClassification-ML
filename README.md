@@ -116,5 +116,57 @@ Estas técnicas ayudan a reducir el sobreajuste y permiten que el modelo aprenda
 
 ![image](https://github.com/user-attachments/assets/65bc234d-d7e0-4083-ab72-3a0ad6e2556b)
 
+## 🤖 Construcción del modelo
+
+### Arquitectura CNN
+Una **Red Neuronal Convolucional (CNN)** es una arquitectura de red para Deep Learning que aprende directamente a partir de datos. Mediante capas de convolución aprende filtros que, de forma jerárquica, reconocen desde bordes y texturas hasta composiciones visuales complejas; las capas de *max-pooling* comprimen la información, otorgando invarianza a traslaciones y escalas. Así, la CNN elimina la dependencia de descriptores manuales y se adapta a la gran variabilidad presente en las capturas de videojuegos.
+
+![image](https://github.com/user-attachments/assets/eae4b4b3-83bc-462d-9d12-417ec1106cd6)
+
+#### ¿Por qué una CNN y no SVM / Random Forest?
+- **Extracción de características automática.** La red aprende sola los filtros que distinguen *pixel-art* (Minecraft) de texturas realistas (CS:GO), algo que los enfoques basados en HOG + SVM no logran sin una ingeniería manual costosa.  
+- **Robustez a transformaciones.** Convolución + pooling mantiene el rendimiento ante cambios de brillo, giros leves o escalados típicos de un *screenshot*.  
+- **Escalabilidad.** La arquitectura puede crecer (más filtros/capas) o migrar a *transfer learning* con muy pocos cambios, mientras que los modelos clásicos requieren redefinir descriptores.  
+- **Desempeño empírico.** En pruebas piloto la CNN superó en ≈ 7 p.p. de *accuracy* a los demás enfoques y mostró menor sobre-ajuste gracias a *data-augmentation* + Dropout.
+
+> **Paper de Referencia**. Breve F. (2023) *From Pixels to Titles: Video Game Identification by Screenshots using Convolutional Neural Networks*, arXiv:2311.15963
+
+### Composición de la CNN
+
+| Bloque | Capa | Parámetros clave | Propósito |
+|--------|------|------------------|-----------|
+| 1 | `Conv2D(32, 3×3)` + ReLU | Entrada `224×224×3` | Detecta bordes/texturas básicas |
+|   | `MaxPooling2D(2×2)` | — | Reduce resolución, gana invarianza |
+| 2 | `Conv2D(64, 3×3)` + ReLU | — | Captura patrones intermedios |
+|   | `MaxPooling2D(2×2)` | — | — |
+| 3 | `Conv2D(128, 3×3)` + ReLU | — | Reconoce estructuras complejas (HUD, mapas) |
+|   | `MaxPooling2D(2×2)` | — | — |
+| — | `Flatten()` | — | Pasa de 3-D a 1-D |
+| — | `Dense(128)` + ReLU | — | Combina rasgos globales |
+| — | `Dropout(0.5)` | — | Mitiga sobre-ajuste |
+| — | `Dense(6)` + Softmax | — | Probabilidades para las 6 clases |
+
+### Selección de métricas
+
+| Métrica | Qué mide | Por qué es útil |
+|---------|----------|-----------------|
+| **Accuracy** | Proporción de aciertos globales | Indicador general de desempeño |
+| **Precisión** | TP / (TP + FP) por clase | Fiabilidad cuando el modelo “afirma” ser un juego X |
+| **Recall** | TP / (TP + FN) por clase | Cuántas imágenes reales de un juego X recupera |
+| **F1-score (macro)** | Media balanceada de precisión y recall | Resume errores clase a clase |
+| **Support** | Nº de muestras por clase | Contextualiza las métricas anteriores |
+
+Además se genera una **matriz de confusión** para visualizar rápidamente en qué títulos la red se equivoca 
+![image](https://github.com/user-attachments/assets/f5dcda05-71de-4d6a-a1dc-14b5de5f12ed)
+
+
+### Compilación y entrenamiento
+
+| Elemento | Configuración | Razonamiento |
+|----------|--------------|--------------|
+| **Optimizador** | Adam | Convergencia estable y sin ajuste manual del *learning rate* |
+| **Pérdida** | `categorical_crossentropy` | Adecuada para clasificación *one-hot* |
+| **Métrica primaria** | `accuracy` | Feedback rápido en cada epoch |
+
 
 
