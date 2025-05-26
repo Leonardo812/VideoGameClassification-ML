@@ -129,7 +129,7 @@ Una **Red Neuronal Convolucional (CNN)** es una arquitectura de red para Deep Le
 - **Escalabilidad.** La arquitectura puede crecer (más filtros/capas) o migrar a *transfer learning* con muy pocos cambios, mientras que los modelos clásicos requieren redefinir descriptores.  
 - **Desempeño empírico.** En pruebas piloto la CNN superó en ≈ 7 p.p. de *accuracy* a los demás enfoques y mostró menor sobre-ajuste gracias a *data-augmentation* + Dropout.
 
-> **Referencia**. Breve F. (2023) *From Pixels to Titles: Video Game Identification by Screenshots using Convolutional Neural Networks*, arXiv:2311.15963
+> **Paper de Referencia**. Breve F. (2023) *From Pixels to Titles: Video Game Identification by Screenshots using Convolutional Neural Networks*, arXiv:2311.15963
 
 ### Composición de la CNN
 
