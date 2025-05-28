@@ -62,10 +62,11 @@ Estas limitaciones podían afectar negativamente la capacidad del modelo para ge
 
 Cada clase del dataset original contenía aproximadamente 4,000 imágenes para entrenamiento y 1,000 para prueba. No obstante, se redujo intencionalmente la cantidad de imágenes a un aproximado de:
 
-- **700 imágenes por clase para entrenamiento**
+- **630 imágenes por clase para entrenamiento**
+- **70 imágenes por clase para validación**
 - **150 imágenes por clase para prueba**
 
-Esta reducción tuvo como objetivo priorizar la calidad y la diversidad del contenido, manteniendo un balance entre clases y una proporción de **80% para entrenamiento y 20% para prueba**.
+Esta reducción tuvo como objetivo priorizar la calidad y la diversidad del contenido, manteniendo un balance entre clases y una proporción de **70% para entrenamiento, 10% para validación y 20% para prueba**.
 
 ---
 
