@@ -173,7 +173,7 @@ Una **Red Neuronal Convolucional (CNN)** es una arquitectura de red para Deep Le
 | **Validation steps** | **14** | El conjunto de validación quedó en 445 imágenes /  batch size. Suficiente para estimar la generalización sin alargar demasiado cada época. |
 | **Pesos de clase** | **No aplicados** | El dataset resultó equilibrado ( 700 ± 70 imágenes por clase). Por ello no fue necesario ponderar la pérdida; todas las clases contribuyen por igual durante el aprendizaje. |
 
-## 📈 Evolución del entrenamiento
+## 📈 Evolución del entrenamiento primera version del modelo
 
 ![image](https://github.com/user-attachments/assets/2caeae96-fdda-4dc5-9929-ac27283776c8)
 
