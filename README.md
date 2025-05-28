@@ -217,7 +217,7 @@ Una **Red Neuronal Convolucional (CNN)** es una arquitectura de red para Deep Le
 
 ### Resumen global
 
-- **Accuracy test = 0.92** confirma que la CNN generaliza bien a imágenes no vistas. Sin embargo es muy probable que las confusiones se concentran en los juegos (Valorant, Overwatch yMinecraft-pixel-like), coherentes con su similitud visual.  
+- **Accuracy test = 0.92** confirma que la CNN generaliza bien a imágenes no vistas por lo que el modelo funciona. Sin embargo es muy probable que exitan confusiones que se concentren en los juegos (Valorant, Overwatch yMinecraft-pixel-like). Pues haciendo pruebas de prediccion son los juegos que el modelo confunde mas comunmente. Esto puede ser debido a su similitud visual.
 
 
 
