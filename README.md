@@ -175,7 +175,7 @@ Además se genera una **matriz de confusión** para visualizar rápidamente en q
 | **Batch size** | **32** | Con 32 imágenes por lote se logra suficiente aleatoriedad para que el gradiente sea representativo y al mismo tiempo, el consumo de VRAM sea moderado |
 | **Épocas** | **10** | Se realizó una primera corrida de 10 pasadas completas sobre los datos. Las curvas *loss/accuracy* mostraron estabilización y ningún signo de overfitting prematuro. |
 | **Steps per epoch** | **126** | Se revisan 126 imagenes por época ( 4 006 imágenes de entrenamiento / batch size). Esto permite que cada imagen sea procesada exactamente una vez por época. |
-| **Validation steps** | **14** | El conjunto de validación quedó en 445 imágenes → `ceil(445 / 32) = 14` lotes. Suficiente para estimar la generalización sin alargar demasiado cada época. |
-| **Pesos de clase** | **No aplicados** | El dataset resultó equilibrado (≈ 700 ± 70 imágenes por clase). Por ello no fue necesario ponderar la pérdida; todas las clases contribuyen por igual durante el aprendizaje. |
+| **Validation steps** | **14** | El conjunto de validación quedó en 445 imágenes /  batch size dando 14 lotes. Suficiente para estimar la generalización sin alargar demasiado cada época. |
+| **Pesos de clase** | **No aplicados** | El dataset resultó equilibrado ( 700 ± 70 imágenes por clase). Por ello no fue necesario ponderar la pérdida; todas las clases contribuyen por igual durante el aprendizaje. |
 
 
