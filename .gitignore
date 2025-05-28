@@ -1,0 +1,3 @@
+# ── Modelos entrenados ──
+model.keras
+*.h5
