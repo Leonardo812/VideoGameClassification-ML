@@ -178,4 +178,17 @@ Además se genera una **matriz de confusión** para visualizar rápidamente en q
 | **Validation steps** | **14** | El conjunto de validación quedó en 445 imágenes /  batch size dando 14 lotes. Suficiente para estimar la generalización sin alargar demasiado cada época. |
 | **Pesos de clase** | **No aplicados** | El dataset resultó equilibrado ( 700 ± 70 imágenes por clase). Por ello no fue necesario ponderar la pérdida; todas las clases contribuyen por igual durante el aprendizaje. |
 
+![image](https://github.com/user-attachments/assets/9ca39f1a-de03-4222-8383-d2f07ec76807)
+
+
+![image](https://github.com/user-attachments/assets/fcbd36cf-b8d7-4e56-aea7-cb5a8aef723d)
+
+
+![image](https://github.com/user-attachments/assets/9b306a41-80a2-4210-8941-c95def768ae0)
+
+
+![image](https://github.com/user-attachments/assets/9c618a57-4070-4934-8ce4-5b1910412fe0)
+
+
+
 
