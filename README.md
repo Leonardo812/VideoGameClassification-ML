@@ -175,10 +175,6 @@ Una **Red Neuronal Convolucional (CNN)** es una arquitectura de red para Deep Le
 
 ## 📈 Evolución del entrenamiento
 
-| ![Accuracy vs Epoch](ruta/a/accuracy.png) | ![Loss vs Epoch](ruta/a/loss.png) |
-|------------------------------------------|----------------------------------|
-| **Fig. 1** – Curvas de *accuracy* para entrenamiento y validación. | **Fig. 2** – Curvas de *loss* para entrenamiento y validación. |
-
 ![image](https://github.com/user-attachments/assets/2caeae96-fdda-4dc5-9929-ac27283776c8)
 
 ![image](https://github.com/user-attachments/assets/9c856dc9-09d9-4a76-b540-ca91af7eebff)
