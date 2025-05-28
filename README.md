@@ -160,7 +160,7 @@ Además se genera una **matriz de confusión** para visualizar rápidamente en q
 ![image](https://github.com/user-attachments/assets/f5dcda05-71de-4d6a-a1dc-14b5de5f12ed)
 
 
-### Compilación y entrenamiento
+### 🔧 Configuración de entrenamiento
 
 | Elemento | Configuración | Razonamiento |
 |----------|--------------|--------------|
@@ -168,14 +168,12 @@ Además se genera una **matriz de confusión** para visualizar rápidamente en q
 | **Pérdida** | `categorical_crossentropy` | Adecuada para clasificación *one-hot* |
 | **Métrica primaria** | `accuracy` | Feedback rápido en cada epoch |
 
-### 🔧 Configuración de entrenamiento
-
 | Hiperparámetro | Valor usado | Por qué se eligió |
 |----------------|------------|-------------------|
 | **Batch size** | **32** | Con 32 imágenes por lote se logra suficiente aleatoriedad para que el gradiente sea representativo y al mismo tiempo, el consumo de VRAM sea moderado |
 | **Épocas** | **10** | Se realizó una primera corrida de 10 pasadas completas sobre los datos. Las curvas *loss/accuracy* mostraron estabilización y ningún signo de overfitting prematuro. |
 | **Steps per epoch** | **126** | Se revisan 126 imagenes por época ( 4 006 imágenes de entrenamiento / batch size). Esto permite que cada imagen sea procesada exactamente una vez por época. |
-| **Validation steps** | **14** | El conjunto de validación quedó en 445 imágenes /  batch size dando 14 lotes. Suficiente para estimar la generalización sin alargar demasiado cada época. |
+| **Validation steps** | **14** | El conjunto de validación quedó en 445 imágenes /  batch size. Suficiente para estimar la generalización sin alargar demasiado cada época. |
 | **Pesos de clase** | **No aplicados** | El dataset resultó equilibrado ( 700 ± 70 imágenes por clase). Por ello no fue necesario ponderar la pérdida; todas las clases contribuyen por igual durante el aprendizaje. |
 
 ![image](https://github.com/user-attachments/assets/2caeae96-fdda-4dc5-9929-ac27283776c8)
