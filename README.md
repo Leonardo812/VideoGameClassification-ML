@@ -215,6 +215,10 @@ Una **Red Neuronal Convolucional (CNN)** es una arquitectura de red para Deep Le
 * **Valorant** presenta la mayor confusión; absorbe muestras de **Minecraft** (25) y **Overwatch** (30), lo que explica su menor precisión (0.74) y el recall alto (0.98).  
 * **Minecraft** y **Overwatch** pierden recall por esa misma confusión, aunque mantienen precisión > 0.95.  
 
+### Resumen global
+
+- **Accuracy test = 0.92** confirma que la CNN generaliza bien a imágenes no vistas. Sin embargo es muy probable que las confusiones se concentran en los juegos (Valorant, Overwatch yMinecraft-pixel-like), coherentes con su similitud visual.  
+
 
 
 
