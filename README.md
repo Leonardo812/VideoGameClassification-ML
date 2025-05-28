@@ -144,7 +144,6 @@ Una **Red Neuronal Convolucional (CNN)** es una arquitectura de red para Deep Le
 |   | `MaxPooling2D(2×2)` | — | — |
 | — | `Flatten()` | — | Pasa de 3-D a 1-D |
 | — | `Dense(128)` + ReLU | — | Combina rasgos globales |
-| — | `Dropout(0.5)` | — | Mitiga sobre-ajuste |
 | — | `Dense(6)` + Softmax | — | Probabilidades para las 6 clases |
 
 ### Selección de métricas
@@ -155,7 +154,7 @@ Una **Red Neuronal Convolucional (CNN)** es una arquitectura de red para Deep Le
 | **Precisión** | TP / (TP + FP) por clase | Fiabilidad cuando el modelo “afirma” ser un juego X |
 | **Recall** | TP / (TP + FN) por clase | Cuántas imágenes reales de un juego X recupera |
 | **F1-score (macro)** | Media balanceada de precisión y recall | Resume errores clase a clase |
-| **Support** | Nº de muestras por clase | Contextualiza las métricas anteriores |
+| **Support** | Nº de muestras por clase | Conteo de ejemplos reales que pertenecen a cada clase |
 
 Además se genera una **matriz de confusión** para visualizar rápidamente en qué títulos la red se equivoca 
 ![image](https://github.com/user-attachments/assets/f5dcda05-71de-4d6a-a1dc-14b5de5f12ed)
