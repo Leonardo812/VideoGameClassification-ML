@@ -156,9 +156,6 @@ Una **Red Neuronal Convolucional (CNN)** es una arquitectura de red para Deep Le
 | **F1-score (macro)** | Media balanceada de precisión y recall | Resume errores clase a clase |
 | **Support** | Nº de muestras por clase | Conteo de ejemplos reales que pertenecen a cada clase |
 
-Además se genera una **matriz de confusión** para visualizar rápidamente en qué títulos la red se equivoca 
-![image](https://github.com/user-attachments/assets/f5dcda05-71de-4d6a-a1dc-14b5de5f12ed)
-
 
 ### 🔧 Configuración de entrenamiento
 
@@ -176,17 +173,52 @@ Además se genera una **matriz de confusión** para visualizar rápidamente en q
 | **Validation steps** | **14** | El conjunto de validación quedó en 445 imágenes /  batch size. Suficiente para estimar la generalización sin alargar demasiado cada época. |
 | **Pesos de clase** | **No aplicados** | El dataset resultó equilibrado ( 700 ± 70 imágenes por clase). Por ello no fue necesario ponderar la pérdida; todas las clases contribuyen por igual durante el aprendizaje. |
 
+## 📈 Evolución del entrenamiento
+
+| ![Accuracy vs Epoch](ruta/a/accuracy.png) | ![Loss vs Epoch](ruta/a/loss.png) |
+|------------------------------------------|----------------------------------|
+| **Fig. 1** – Curvas de *accuracy* para entrenamiento y validación. | **Fig. 2** – Curvas de *loss* para entrenamiento y validación. |
+
 ![image](https://github.com/user-attachments/assets/2caeae96-fdda-4dc5-9929-ac27283776c8)
 
 ![image](https://github.com/user-attachments/assets/9c856dc9-09d9-4a76-b540-ca91af7eebff)
+
+### Análisis de las curvas
+
+- **Crecimiento sólido**. La *accuracy* de entrenamiento pasa de **0.60 → 0.97** en 7 épocas, mientras la de validación sube hasta **0.94**.   
+- **Loss estable**. La pérdida de validación oscila entre **0.25 – 0.35**; no hay picos bruscos, señal de que el modelo generaliza con estabilidad.  
+
+> **Conclusión**: el modelo converge rápido y mantiene un equilibrio razonable entre ajuste y generalización; continuar más allá de 10 épocas daría ganancias marginales y riesgo de sobre-ajuste.
 
 
 
 
 ![image](https://github.com/user-attachments/assets/9b306a41-80a2-4210-8941-c95def768ae0)
 
+---
+
+## 📈 Desempeño en el conjunto **test**
+
+| Clase            | Precisión | Recall | F1-score | Soporte |
+|------------------|-----------|--------|----------|---------|
+| Clash-Royale     | **0.98**  | **0.99** | **0.99** | 161 |
+| Counter-Strike   | **0.99**  | **1.00** | **1.00** | 154 |
+| Dead by Daylight | 0.97 | **1.00** | 0.98 | 157 |
+| Minecraft        | 0.98 | 0.79 | 0.88 | 157 |
+| Overwatch        | 0.96 | 0.77 | 0.86 | 151 |
+| Valorant         | 0.74 | 0.98 | 0.84 | 165 |
+| **Accuracy global** |  |  | **0.92** | 945 |
+| **Macro avg**    | **0.94** | 0.92 | 0.92 | 945 |
+| **Weighted avg** | **0.94** | 0.92 | 0.92 | 945 |
 
 ![image](https://github.com/user-attachments/assets/9c618a57-4070-4934-8ce4-5b1910412fe0)
+
+### Analisis de la matriz
+
+* **Clash-Royale, Counter-Strike y Dead by Daylight** se clasifican casi perfectos (> 0.97 F1).  
+* **Valorant** presenta la mayor confusión; absorbe muestras de **Minecraft** (25) y **Overwatch** (30), lo que explica su menor precisión (0.74) y el recall alto (0.98).  
+* **Minecraft** y **Overwatch** pierden recall por esa misma confusión, aunque mantienen precisión > 0.95.  
+
 
 
 
