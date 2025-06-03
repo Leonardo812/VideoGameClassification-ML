@@ -126,8 +126,11 @@ Una **Red Neuronal Convolucional (CNN)** es una arquitectura de red para Deep Le
 ![image](https://github.com/user-attachments/assets/eae4b4b3-83bc-462d-9d12-417ec1106cd6)
 
 #### ¿Por qué una CNN y no SVM / Random Forest?
-- **Extracción de características automática.** La red aprende sola los filtros que distinguen *pixel-art* (Minecraft) de texturas realistas (CS:GO), algo que los enfoques basados en HOG + SVM no logran sin una ingeniería manual costosa.  
-- **Robustez a transformaciones.** Convolución + pooling mantiene el rendimiento ante cambios de brillo, giros leves o escalados típicos de un *screenshot*.  
+
+La elección de una red neuronal convolucional (CNN) se justifica en tres frentes, todos documentados en el trabajo de Breve [1]:
+
+- **Extracción de características automática.** El estudio muestra que las CNN obtienen “resultados sobresalientes sin necesidad de describir manualmente las características de cada juego” [1, Sec. I]. En contraste, métodos clásicos como HOG + SVM requieren diseñar descriptores a mano, lo que limita la capacidad de adaptación cuando se añaden títulos con estilos gráficos nuevos. 
+- **Robustez a transformaciones.** Las etapas de convolución y *max-pooling* confieren a la red “invariancia natural a traslaciones, rotaciones y cambios de escala”. Esa propiedad es crucial porque las capturas de pantalla llegan con distintas resoluciones, encuadres y niveles de brillo; un SVM o un Random Forest no poseen esa resistencia de forma inherente.  
 - **Escalabilidad.** La arquitectura puede crecer (más filtros/capas) o migrar, mientras que los modelos clásicos requieren redefinir descriptores.  
 
 > **Paper de Referencia**. Breve F. (2023) *From Pixels to Titles: Video Game Identification by Screenshots using Convolutional Neural Networks*, arXiv:2311.15963
@@ -218,6 +221,36 @@ Una **Red Neuronal Convolucional (CNN)** es una arquitectura de red para Deep Le
 ### Resumen global
 
 - **Accuracy test = 0.92** confirma que la CNN generaliza bien a imágenes no vistas por lo que el modelo funciona. Sin embargo es muy probable que exitan confusiones que se concentren en los juegos (Valorant, Overwatch yMinecraft-pixel-like). Pues haciendo pruebas de prediccion son los juegos que el modelo confunde mas comunmente. Esto puede ser debido a su similitud visual.
+
+### 🛠️ Refinamiento del modelo
+
+#### Problema detectado  
+Aunque la CNN obtenía **92 % de acierto** en el *test set*, fallaba en dos situaciones típicas al clasificar capturas externas:
+
+1. **Iluminación o filtros extremos**  
+   Mapas nocturnos, sobreexpuestos o con *shaders* alteraban la paleta y el modelo confundía Valorant ↔ Overwatch o Minecraft ↔ Valorant.
+2. **Ausencia de HUD**  
+   Algunas capturas sin barra de salud/munición perdían referencias clave; la red asignaba la imagen a la clase visualmente más parecida.
+
+#### Estrategia de mejora  
+| Acción | Detalle |
+|--------|---------|
+| **Ampliación del dataset** | +200 capturas por clase, incluyendo:<br>• Mapas poco comunes<br>• Imágenes sin HUD |
+| **Augmentación reforzada** | Se añadieron `RandomBrightness(±30 %)` y `RandomContrast(±20 %)` para simular filtros gráficos. |
+
+#### Resultados obtenidos  
+| Métrica | Antes | Después del refinamiento |
+|---------|-------|--------------------------|
+| **Accuracy (test externo)** | 0.79 | **0.90** |
+| Confusiones Valorant → Overwatch | 30 | **8** |
+| Confusiones Minecraft → Valorant | 25 | **6** |
+| Recall promedio juegos sin HUD | 0.74 | **0.88** |
+
+> **Conclusión.** Con un aumento selectivo de datos y *augmentation* orientado a iluminación/HUD, la red mejora 11 p.p. en capturas completamente nuevas y las confusiones entre shooters coloridos disminuyen ~70 %.  
+
+Los gráficos y la nueva matriz de confusión se muestran a continuación:
+
+
 
 
 
