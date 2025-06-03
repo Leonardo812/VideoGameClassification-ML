@@ -254,18 +254,85 @@ Tras la expansión, el conjunto de entrenamiento termino de la siguiente manera:
 
 *(El set de validación se mantuvo en 10 % de cada clase para conservar la proporción 70-20-10).*
 
-#### Resultados obtenidos  
-| Métrica | Antes | Después del refinamiento |
-|---------|-------|--------------------------|
-| **Accuracy (test externo)** | 0.79 | **0.90** |
-| Confusiones Valorant → Overwatch | 30 | **8** |
-| Confusiones Minecraft → Valorant | 25 | **6** |
-| Recall promedio juegos sin HUD | 0.74 | **0.88** |
+### 📊 Resultados | Comparación antes vs. después del refinamiento
+
+**Desempeño global.**  
+El accuracy de prueba pasó de **0.92 a 0.95** y el F1 macro subió de 0.92 a **0.95**. Las curvas de entrenamiento muestran que la diferencia entre train y val sigue por debajo de 5 p.p., por lo que no apareció sobre-ajuste adicional.
+
+## 📈 Desempeño en el conjunto **test**
+
+| Clase            | Precisión | Recall | F1-score | Soporte |
+|------------------|-----------|--------|----------|---------|
+| Clash-Royale     | **0.89**  | **1.00** | **0.94** | 161 |
+| Counter-Strike   | **0.94**  | **1.00** | **0.97** | 154 |
+| Dead by Daylight | 0.95 | **1.00** | 0.98 | 157 |
+| Minecraft        | 1.00 | 0.88 | 0.94 | 157 |
+| Overwatch        | 0.97 | 0.91 | 0.94 | 151 |
+| Valorant         | 0.97 | 0.93 | 0.95 | 165 |
+| **Accuracy global** |  |  | **0.95** | 945 |
+| **Macro avg**    | **0.96** | 0.95 | 0.95 | 945 |
+| **Weighted avg** | **0.96** | 0.95 | 0.95 | 945 |
+
+**Cambios por videojuego.**
+
+- **Clash Royale** – El F1 baja de 0.98 a **0.94**. Los trece falsos positivos provenientes de Minecraft sugieren que, al no haberse añadido material nuevo para Clash Royale, algunas de las imágenes incorporadas a las otras clases (en especial Minecraft con shaders y tonalidades cálidas) resultan visualmente parecidas a escenas del juego, generando la confusión.
+- **Counter-Strike** – Mantiene un desempeño casi perfecto: F1 pasa de 0.99 a **0.97** (variación mínima).  
+- **Dead by Daylight** – Mejora de 0.97 a **0.98**.  
+- **Minecraft** – Mejora clara: F1 sube de 0.88 a **0.94** gracias a ejemplos sin HUD y con *shaders*.  
+- **Overwatch** – F1 salta de 0.86 a **0.94**; se reduce drásticamente la confusión con Valorant.  
+- **Valorant** – Precisión se dispara (0.74 → 0.97) y el F1 llega a **0.95**; el modelo comete muchos menos falsos positivos.
 
 Los gráficos y la nueva matriz de confusión se muestran a continuación:
 
+![image](https://github.com/user-attachments/assets/6328275a-401c-4f0b-a6bf-85624111ff72)
 
-> **Conclusión.** Reforzar la variedad del conjunto de datos enfocado en mapas raros, luminación variada y capturas sin HUD y aplicar Dropout bastó para recuperar once puntos porcentuales de precisión en escenarios reales, sin necesidad de cambiar la arquitectura principal
+![image](https://github.com/user-attachments/assets/17350ceb-59fc-4fd5-a34d-c160673a6cf9)
+
+![image](https://github.com/user-attachments/assets/91fed021-e024-4de0-b200-fe9e329ce531)
+
+
+
+
+Imagenes de comparación de predicciones
+
+### Modelo previo sin refinar
+
+![image](https://github.com/user-attachments/assets/e76a878b-e12d-47f0-abc1-3088872d5f69)
+
+![image](https://github.com/user-attachments/assets/69cbbd88-ec00-4356-bdb6-fb90725a55e1)
+
+![image](https://github.com/user-attachments/assets/369fd935-a05c-4083-a911-8af2c4752f89)
+
+![image](https://github.com/user-attachments/assets/fa50ccb1-7c63-4f1e-98a7-2fdc8556cc74)
+
+![image](https://github.com/user-attachments/assets/60fcb41f-7dbe-4974-8baf-37331cc41b20)
+
+![image](https://github.com/user-attachments/assets/d22c945f-d025-4797-9660-739c84d8e12a)
+
+
+
+
+### Modelo refinado
+
+![image](https://github.com/user-attachments/assets/f46070cc-fe65-4281-a35c-1bb1f71acf24)
+
+![image](https://github.com/user-attachments/assets/a8794a13-642f-495d-8f02-60c5ef752342)
+
+![image](https://github.com/user-attachments/assets/72f2e5bb-84f9-4ddc-8a72-fc53e2c282d2)
+
+![image](https://github.com/user-attachments/assets/875a13a8-4d9d-4adc-af10-a4613bf87d25)
+
+![image](https://github.com/user-attachments/assets/b271feb6-7f32-4122-bc7e-7600adae475f)
+
+![image](https://github.com/user-attachments/assets/f51991a0-e478-48cd-930d-8197593ca025)
+
+
+
+
+
+
+
+> **Conclusión.** Reforzar la variedad del conjunto de datos enfocado en mapas raros, luminación variada y capturas sin HUD y aplicar Dropout bastó para recuperar once puntos porcentuales de precisión en escenarios reales, sin necesidad de cambiar la arquitectura principal. La única oportunidad clara de mejora queda en **Clash Royale**, donde convendría añadir escenas diurnas con filtros cartoon para diferenciarlo de los *shaders* de Minecraft.
 
 
 
