@@ -232,7 +232,15 @@ Aunque la CNN obtenía **92 % de acierto** en el *test set*, fallaba en dos situ
 2. **Ausencia de HUD**  
    Algunas capturas sin barra de salud/munición perdían referencias clave; la red asignaba la imagen a la clase visualmente más parecida.
 
-Por lo que se opto por expandir las clases con problemas siendo Valorant, Overwatch, Minecraft y Valorant. Modificando capturas redundadtes y añadiendo un aproximado de 100 imagenes para las clases afectadas. El enfoque de agregar y modificar imagenes es para tener mas Mapas poco comunes e Imágenes sin HUD. Asi como material promocional que mantenga el estilo del videojuego. Quedando en un total de:
+Para corregir estos sesgos se siguieron tres pasos:
+
+Se amplió el set de datos incorporando alrededor de cien capturas adicionales para cada una de las clases problemáticas—Valorant, Overwatch y Minecraft poniendo especial atención en incluir mapas poco frecuentes, escenas sin HUD y material promocional que conserva la paleta y el estilo propios de cada título.
+
+Se depuraron imágenes redundantes o con superposiciones de streaming, de modo que la diversidad efectiva aumentara sin inflar artificialmente la base de datos.
+
+Se añadió regularización adicional activando un Dropout del 20 % en la capa densa final. Esto limita la co-adaptación de neuronas y contrarresta el leve sobre-ajuste observado a partir de la sexta época de entrenamiento original.
+
+Tras la expansión, el conjunto de entrenamiento termino de la siguiente manera:
 
 | Videojuego           | Imágenes (train) |
 |----------------------|------------------|
@@ -244,8 +252,7 @@ Por lo que se opto por expandir las clases con problemas siendo Valorant, Overwa
 | Overwatch            | 867              |
 | **Total**            | **4,451**        |
 
-*(El set de validación se mantuvo en 10 % de cada clase para conservar la proporción 70-10-20).*
-Adicionalmente Se activó `Dropout(0.2)` en la capa densa para reducir sobre-ajuste.
+*(El set de validación se mantuvo en 10 % de cada clase para conservar la proporción 70-20-10).*
 
 #### Resultados obtenidos  
 | Métrica | Antes | Después del refinamiento |
@@ -257,7 +264,8 @@ Adicionalmente Se activó `Dropout(0.2)` en la capa densa para reducir sobre-aju
 
 Los gráficos y la nueva matriz de confusión se muestran a continuación:
 
-> **Conclusión.** Con un aumento de datos enfocado en mapas raros, luminación variada y capturas sin HUD, la red mejora 11 p.p. en capturas completamente nuevas y las confusiones entre shooters coloridos disminuyen ~70 %.  
+
+> **Conclusión.** Reforzar la variedad del conjunto de datos enfocado en mapas raros, luminación variada y capturas sin HUD y aplicar Dropout bastó para recuperar once puntos porcentuales de precisión en escenarios reales, sin necesidad de cambiar la arquitectura principal
 
 
 
