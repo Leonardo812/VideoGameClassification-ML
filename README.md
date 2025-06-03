@@ -303,7 +303,7 @@ Los gráficos y la nueva matriz de confusión se muestran a continuación:
 
 
 
-Imagenes de comparación de predicciones
+### Imagenes de comparación de predicciones
 
 ### Modelo previo sin refinar
 
