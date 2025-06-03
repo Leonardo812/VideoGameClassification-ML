@@ -282,6 +282,8 @@ El accuracy de prueba pasó de **0.92 a 0.95** y el F1 macro subió de 0.92 a **
 - **Overwatch** – F1 salta de 0.86 a **0.94**; se reduce drásticamente la confusión con Valorant.  
 - **Valorant** – Precisión se dispara (0.74 → 0.97) y el F1 llega a **0.95**; el modelo comete muchos menos falsos positivos.
 
+> **Interpretación:** las escenas oscuras o de tonos cálidos que antes se confundían con Valorant ahora se reparten entre Clash-Royale y Dead by Daylight, lo que explica la ligera caída de F1 en Clash-Royale.
+
 Los gráficos y la nueva matriz de confusión se muestran a continuación:
 
 ![image](https://github.com/user-attachments/assets/6328275a-401c-4f0b-a6bf-85624111ff72)
@@ -293,7 +295,7 @@ Los gráficos y la nueva matriz de confusión se muestran a continuación:
 - Esos errores se reducen a 0 (Minecraft → Valorant) y 4 (Overwatch → Valorant).  
 - Aparecen nuevas confusiones menores de Minecraft y Overwatch hacia Clash-Royale (13 y 6 casos) y Dead by Daylight (4 y 3 casos).  
 
-> **Interpretación:** las escenas oscuras o de tonos cálidos que antes se confundían con Valorant ahora se reparten entre Clash-Royale y Dead by Daylight, lo que explica la ligera caída de F1 en Clash-Royale.
+
 
 
 ![image](https://github.com/user-attachments/assets/17350ceb-59fc-4fd5-a34d-c160673a6cf9)
