@@ -286,6 +286,16 @@ Los gráficos y la nueva matriz de confusión se muestran a continuación:
 
 ![image](https://github.com/user-attachments/assets/6328275a-401c-4f0b-a6bf-85624111ff72)
 
+
+- Las confusiones Valorant → Overwatch caen de 30 a **4**.  
+- Minecraft → Valorant desaparece (25 → **0**), aunque parte migra a Clash Royale y Dead by Daylight.  
+- Counter-Strike y Dead by Daylight conservan todos sus aciertos en la diagonal.
+- Esos errores se reducen a 0 (Minecraft → Valorant) y 4 (Overwatch → Valorant).  
+- Aparecen nuevas confusiones menores de Minecraft y Overwatch hacia Clash-Royale (13 y 6 casos) y Dead by Daylight (4 y 3 casos).  
+
+> **Interpretación:** las escenas oscuras o de tonos cálidos que antes se confundían con Valorant ahora se reparten entre Clash-Royale y Dead by Daylight, lo que explica la ligera caída de F1 en Clash-Royale.
+
+
 ![image](https://github.com/user-attachments/assets/17350ceb-59fc-4fd5-a34d-c160673a6cf9)
 
 ![image](https://github.com/user-attachments/assets/91fed021-e024-4de0-b200-fe9e329ce531)
@@ -309,6 +319,9 @@ Imagenes de comparación de predicciones
 
 ![image](https://github.com/user-attachments/assets/d22c945f-d025-4797-9660-739c84d8e12a)
 
+![image](https://github.com/user-attachments/assets/b3660e4a-72f3-4e37-9222-bdcd8021e580)
+
+
 
 
 
@@ -326,8 +339,7 @@ Imagenes de comparación de predicciones
 
 ![image](https://github.com/user-attachments/assets/f51991a0-e478-48cd-930d-8197593ca025)
 
-
-
+![image](https://github.com/user-attachments/assets/832bd11f-b95c-4f66-b710-6b65e2af2b75)
 
 
 
