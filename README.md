@@ -232,11 +232,20 @@ Aunque la CNN obtenía **92 % de acierto** en el *test set*, fallaba en dos situ
 2. **Ausencia de HUD**  
    Algunas capturas sin barra de salud/munición perdían referencias clave; la red asignaba la imagen a la clase visualmente más parecida.
 
-#### Estrategia de mejora  
-| Acción | Detalle |
-|--------|---------|
-| **Ampliación del dataset** | +200 capturas por clase, incluyendo:<br>• Mapas poco comunes<br>• Imágenes sin HUD |
-| **Augmentación reforzada** | Se añadieron `RandomBrightness(±30 %)` y `RandomContrast(±20 %)` para simular filtros gráficos. |
+Por lo que se opto por expandir las clases con problemas siendo Valorant, Overwatch, Minecraft y Valorant. Modificando capturas redundadtes y añadiendo un aproximado de 100 imagenes para las clases afectadas. El enfoque de agregar y modificar imagenes es para tener mas Mapas poco comunes e Imágenes sin HUD. Asi como material promocional que mantenga el estilo del videojuego. Quedando en un total de:
+
+| Videojuego           | Imágenes (train) |
+|----------------------|------------------|
+| Dead by Daylight     | 825              |
+| Counter-Strike       | 849              |
+| Valorant             | 912              |
+| Clash Royale         | 718              |
+| Minecraft            | 864              |
+| Overwatch            | 867              |
+| **Total**            | **4,451**        |
+
+*(El set de validación se mantuvo en 10 % de cada clase para conservar la proporción 70-10-20).*
+Adicionalmente Se activó `Dropout(0.2)` en la capa densa para reducir sobre-ajuste.
 
 #### Resultados obtenidos  
 | Métrica | Antes | Después del refinamiento |
@@ -246,9 +255,11 @@ Aunque la CNN obtenía **92 % de acierto** en el *test set*, fallaba en dos situ
 | Confusiones Minecraft → Valorant | 25 | **6** |
 | Recall promedio juegos sin HUD | 0.74 | **0.88** |
 
-> **Conclusión.** Con un aumento selectivo de datos y *augmentation* orientado a iluminación/HUD, la red mejora 11 p.p. en capturas completamente nuevas y las confusiones entre shooters coloridos disminuyen ~70 %.  
-
 Los gráficos y la nueva matriz de confusión se muestran a continuación:
+
+> **Conclusión.** Con un aumento de datos enfocado en mapas raros, luminación variada y capturas sin HUD, la red mejora 11 p.p. en capturas completamente nuevas y las confusiones entre shooters coloridos disminuyen ~70 %.  
+
+
 
 
 
