@@ -1,3 +1,4 @@
 # ── Modelos entrenados ──
-model.keras
 *.h5
+*.keras
+VideoGameClassification-ML-2.ipynb
