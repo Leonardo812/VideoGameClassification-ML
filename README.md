@@ -344,7 +344,7 @@ Los gráficos y la nueva matriz de confusión se muestran a continuación:
 
 
 
-> **Conclusión.** Reforzar la variedad del conjunto de datos enfocado en mapas raros, luminación variada y capturas sin HUD y aplicar Dropout bastó para recuperar once puntos porcentuales de precisión en escenarios reales, sin necesidad de cambiar la arquitectura principal. La única oportunidad clara de mejora queda en **Clash Royale**, donde convendría añadir escenas diurnas con filtros cartoon para diferenciarlo de los *shaders* de Minecraft.
+> **Conclusión.** Reforzar la variedad del conjunto de datos enfocado en mapas raros, luminación variada y capturas sin HUD y aplicar Dropout bastó para identificar adecuadamente las clases de juegos en los que antes fallaba, sin necesidad de cambiar la arquitectura principal. La única oportunidad clara de mejora queda en **Clash Royale**, donde convendría añadir escenas diurnas con filtros cartoon para diferenciarlo de los *shaders* de Minecraft.
 
 
 
