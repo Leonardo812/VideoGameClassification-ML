@@ -346,7 +346,7 @@ Los gráficos y la nueva matriz de confusión se muestran a continuación:
 
 **Conclusión.** 
 
-Reforzar la variedad del conjunto de datos enfocado en mapas raros, luminación variada y capturas sin HUD y aplicar Dropout bastó para identificar adecuadamente las clases de juegos en los que antes fallaba, sin necesidad de cambiar la arquitectura principal. La única oportunidad clara de mejora queda en **Clash Royale**, donde convendría añadir escenas diurnas con filtros cartoon para diferenciarlo de los *shaders* de Minecraft.
+Reforzar la variedad del conjunto de datos enfocado en mapas raros, luminación variada y capturas sin HUD y aplicar Dropout bastó para identificar adecuadamente las clases de juegos en los que antes fallaba, sin necesidad de cambiar la arquitectura principal. La única oportunidad clara de mejora queda en **Clash Royale**, donde convendría añadir escenas diurnas con filtros cartoon para diferenciarlo de los *shaders* de Minecraft. En su estado actual, el modelo logra distinguir con precisión las distintas clases de videojuegos que conforman el conjunto de datos. Por lo que la CNN refinada cumple de manera fiable su función principal identificar capturas de videojuegos—al tiempo que sienta una base robusta para futuras extensiones, como añadir títulos nuevos.
 
 
 
