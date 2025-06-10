@@ -352,8 +352,21 @@ Reforzar la variedad del conjunto de datos enfocado en mapas raros, luminación 
 
 
 
+### 🔧 Mejoras 
 
+Las mejoras implementadas fueron 
+| Videojuego           | Imágenes (train) |
+|----------------------|------------------|
+| Rocket League        | 912              |
+| Clash Royale         | 812              |
+| Sea OF Thieves       | 940             |
+| **Total**            | **4,451**        |
 
+| Videojuego           | Imágenes (test) |
+|----------------------|------------------|
+| Rocket League        | 912              |
+| Sea OF Thieves        | 139              |
+| Clash Royale         | 173              |
 
 
 
